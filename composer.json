@@ -1,0 +1,20 @@
+{
+    "name": "obi/currency-conversion",
+    "description": "Plugin to convert between currencies.",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "Includes\\": "./includes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Obi"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "4.0.x-dev"
+    }
+}
