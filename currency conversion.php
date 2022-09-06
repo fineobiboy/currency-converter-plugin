@@ -37,7 +37,6 @@ along with Currency Converter. If not, see {URI to Plugin License}.
  * @package Currency Conversion
  */
 
- 
 //if the file is not called by wordpress then close everything
 if (!defined('ABSPATH')) {
     die;
