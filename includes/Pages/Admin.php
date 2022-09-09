@@ -9,7 +9,7 @@ namespace Includes\Pages;
 use Includes\Api\SettingsApi;
 use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallback;
-use Includes\Api\Callbacks\WidgetCallback;
+
 
 class Admin extends BaseController
 {
