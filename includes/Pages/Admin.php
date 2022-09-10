@@ -87,6 +87,7 @@ class Admin extends BaseController
         $this->settings->setSettings($args);
     }
 
+    //settign sections that would contain the fields
     public function setSections()
     {
         $args = array(
@@ -101,20 +102,10 @@ class Admin extends BaseController
         $this->settings->setSections($args);
     }
 
+    //fields for the settings
     public function setFields()
     {
         $args = array(
-            array(
-                'id' => 'text_example',
-                'title' => 'Example Fields?',
-                'callback' => array($this->adminCallback, 'currencyFields'),
-                'page' => 'currency_conversion',
-                'section' => 'currency_admin_index',
-                'args' => array(
-                    'label_for' => 'text_example',
-                    'class' => 'example-class'
-                )
-            ),
             array(
                 'id' => 'first_name',
                 'title' => 'First name',
@@ -123,6 +114,17 @@ class Admin extends BaseController
                 'section' => 'currency_admin_index',
                 'args' => array(
                     'label_for' => 'first_name',
+                    'class' => 'example-class'
+                )
+            ),
+            array(
+                'id' => 'last_name',
+                'title' => 'Last name',
+                'callback' => array($this->adminCallback, 'currencyFields'),
+                'page' => 'currency_conversion',
+                'section' => 'currency_admin_index',
+                'args' => array(
+                    'label_for' => 'last_name',
                     'class' => 'example-class'
                 )
             )

@@ -32,13 +32,13 @@ class AdminCallback extends BaseController
 
     public function currencySection()
     {
-        echo 'check me out!';//CHECK THE GITHUB PLACE FOR WHAT IS HERE!!!
+        echo '';
     }
 
     public function currencyFields()
     {
-        $value = esc_attr(get_option('text_example'));
-        echo '<input type = "text" class = "regular-text" name = "text_example" value = "'.$value.'" placeholder = "Write something here pls">';
+        $value = esc_attr(get_option('last_name'));
+        echo '<input type = "text" class = "regular-text" name = "text_example" value = "'.$value.'" placeholder = "Write Last name">';
     }
 
     public function currencyFirstname()
