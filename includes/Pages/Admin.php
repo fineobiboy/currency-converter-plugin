@@ -127,7 +127,6 @@ class Admin extends BaseController
                 )
             )
         );
-
         $this->settings->setFields($args);
     }
 }
