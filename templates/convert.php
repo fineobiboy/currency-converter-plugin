@@ -10,7 +10,7 @@
         <h2>Currency Converter</h2>
         <form name="form1" action="" method="POST">
             <p>Please enter an amount to convert: </p>
-            <input type="text" name="figure01" placeholder="Enter a number" required>
+            <input type="text" name="figure01" size = "15" placeholder="Enter a number" required>
             <select name="convertfrom">
                 <option value="select" selected>Select</option>
                 <option value="USD">US Dollar</option>
@@ -40,28 +40,18 @@ if (isset($_POST['submit'])) {
     $convertfrom = $_POST['convertfrom'];
     $convertinto = $_POST['convertinto'];
 
-    $req_url = 'https://v6.exchangerate-api.com/v6/97318bea3b725a1ddeb6c1cf/latest/' . $convertfrom;
-    $response_json = file_get_contents($req_url);
+    $url = 'https://v6.exchangerate-api.com/v6/97318bea3b725a1ddeb6c1cf/latest/' . $convertfrom;
 
-    // Continue if we get a result
-    if (false !== $response_json) {
-        // Try/catch for json_decode operation
-        try {
-            //Decode the result
-            $response = json_decode($response_json);
-            // Check for success
-            if ('success' === $response->result) {
-                $base_price = $amount;
-                $Converted_price = round(($base_price * $response->conversion_rates->$convertinto), 2);
-            }
-            echo "<strong>$amount</strong>" . " $convertfrom" . ' is equal to ' . "<strong>$Converted_price</strong>" . " $convertinto";
-            
-        } catch (Exception $e) {
-            // Handle JSON parse error...
-            echo $e;
-        }
-    } else {
-        echo 'Could not connect to the server';
+    $apiResponse = wp_remote_get($url);
+
+    $apiBody = json_decode(wp_remote_retrieve_body($apiResponse));
+
+    if ('success' === $apiBody->result) {
+        $base_price = $amount;
+        $Converted_price = round(($base_price * $apiBody->conversion_rates->$convertinto), 2);
     }
+    echo "<strong>$amount</strong>" . " $convertfrom" . ' is equal to ' . "<strong>$Converted_price</strong>" . " $convertinto";
+
 }
+
 ?>
