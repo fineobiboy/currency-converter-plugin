@@ -10,7 +10,7 @@ use Includes\Api\SettingsApi;
 use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallback;
 
->>>>>>> d5cde064ad09570d0dbca42f0dd33645558fa33e
+
 
 class Admin extends BaseController
 {
@@ -129,6 +129,7 @@ class Admin extends BaseController
                 )
             )
         );
+
         $this->settings->setFields($args);
     }
 }
