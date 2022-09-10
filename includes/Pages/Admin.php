@@ -9,6 +9,10 @@ namespace Includes\Pages;
 use Includes\Api\SettingsApi;
 use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallback;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5cde064ad09570d0dbca42f0dd33645558fa33e
 
 class Admin extends BaseController
 {
