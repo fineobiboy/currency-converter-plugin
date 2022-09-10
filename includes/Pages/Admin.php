@@ -9,13 +9,11 @@ namespace Includes\Pages;
 use Includes\Api\SettingsApi;
 use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallback;
-use Includes\Api\Callbacks\WidgetCallback;
 
 class Admin extends BaseController
 {
     public $settings;
     public $adminCallback;
-    public $widgetCallback;
     public $pages = array();
     public $subpages = array();
 
@@ -78,7 +76,7 @@ class Admin extends BaseController
             array(
                 'option_group' => 'currency_option_group',
                 'option_name' => 'text_example',
-                'callback' => array($this->callbacks, 'currencyOptionsGroup')
+                'callback' => array($this->adminCallback, 'currencyOptionsGroup')
             ),
             array(
                 'option_group' => 'currency_option_group',
@@ -95,7 +93,7 @@ class Admin extends BaseController
             array(
                 'id' => 'currency_admin_index',
                 'title' => 'Settings',
-                'callback' => array($this->callbacks, 'currencySection'),
+                'callback' => array($this->adminCallback, 'currencySection'),
                 'page' => 'currency_conversion'
             )
         );
@@ -109,7 +107,7 @@ class Admin extends BaseController
             array(
                 'id' => 'text_example',
                 'title' => 'Example Fields?',
-                'callback' => array($this->callbacks, 'currencyFields'),
+                'callback' => array($this->adminCallback, 'currencyFields'),
                 'page' => 'currency_conversion',
                 'section' => 'currency_admin_index',
                 'args' => array(
@@ -120,7 +118,7 @@ class Admin extends BaseController
             array(
                 'id' => 'first_name',
                 'title' => 'First name',
-                'callback' => array($this->callbacks, 'currencyFirstname'),
+                'callback' => array($this->adminCallback, 'currencyFirstname'),
                 'page' => 'currency_conversion',
                 'section' => 'currency_admin_index',
                 'args' => array(
