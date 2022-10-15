@@ -47,13 +47,14 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-//The activation and deactivation hooks that run when the plugin is started
+//The activation hook that runs when the plugin is activated
 function activate_conversion_plugin()
 {
     Includes\Base\Activate::activate();
 }
 register_activation_hook(__FILE__, 'activate_conversion_plugin');
 
+//The deactivation hook that runs when the plugin is deactivated
 function deactivate_conversion_plugin()
 {
     Includes\Base\Deactivate::deactivate();

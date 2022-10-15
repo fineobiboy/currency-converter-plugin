@@ -9,13 +9,14 @@ namespace Includes\Pages;
 use Includes\Api\SettingsApi;
 use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallback;
+use Includes\Api\Callbacks\SettingsMngrCallback;
 
 
 class Admin extends BaseController
 {
     public $settings;
     public $adminCallback;
-    public $widgetCallback;
+    public $settingsCallback;
     public $pages = array();
     public $subpages = array();
 
@@ -24,6 +25,7 @@ class Admin extends BaseController
         $this->settings = new SettingsApi();
 
         $this->adminCallback = new AdminCallback();
+        $this->settingsCallback = new SettingsMngrCallback();
 
         $this->setPages();
         $this->setSubPages();
@@ -76,26 +78,28 @@ class Admin extends BaseController
     {
         $args = array(
             array(
-                'option_group' => 'currency_option_group',
-                'option_name' => 'text_example',
-                'callback' => array($this->callbacks, 'currencyOptionsGroup')
+                'option_group' => 'currency_plugin_settings',
+                'option_name' => 'widgets_manager',
+                'callback' => array($this->settingsCallback, 'sanitizeCheckbox')
             ),
             array(
-                'option_group' => 'currency_option_group',
-                'option_name' => 'first_name'
+                'option_group' => 'currency_plugin_settings',
+                'option_name' => 'taxonomy_manager',
+                'callback' => array($this->settingsCallback, 'sanitizeCheckbox')
             )
         );
 
         $this->settings->setSettings($args);
     }
 
+    //settign sections that would contain the fields
     public function setSections()
     {
         $args = array(
             array(
                 'id' => 'currency_admin_index',
                 'title' => 'Settings',
-                'callback' => array($this->callbacks, 'currencySection'),
+                'callback' => array($this->settingsCallback, 'currencySectionMngr'),
                 'page' => 'currency_conversion'
             )
         );
@@ -103,29 +107,30 @@ class Admin extends BaseController
         $this->settings->setSections($args);
     }
 
+    //fields for the settings
     public function setFields()
     {
         $args = array(
             array(
-                'id' => 'text_example',
-                'title' => 'Example Fields?',
-                'callback' => array($this->callbacks, 'currencyFields'),
+                'id' => 'widgets_manager',
+                'title' => 'Activate Widget',
+                'callback' => array($this->settingsCallback, 'checkBoxField'),
                 'page' => 'currency_conversion',
                 'section' => 'currency_admin_index',
                 'args' => array(
-                    'label_for' => 'text_example',
-                    'class' => 'example-class'
+                    'label_for' => 'widgets_manager',
+                    'class' => 'ui-toggle'
                 )
             ),
             array(
-                'id' => 'first_name',
-                'title' => 'First name',
-                'callback' => array($this->callbacks, 'currencyFirstname'),
+                'id' => 'taxonomy_manager',
+                'title' => 'Activate Taxonomy Manager',
+                'callback' => array($this->settingsCallback, 'checkBoxField'),
                 'page' => 'currency_conversion',
                 'section' => 'currency_admin_index',
                 'args' => array(
-                    'label_for' => 'first_name',
-                    'class' => 'example-class'
+                    'label_for' => 'taxonomy_manager',
+                    'class' => 'ui-toggle'
                 )
             )
         );

@@ -25,24 +25,26 @@ class AdminCallback extends BaseController
         return require_once ("$this->plugin_path/templates/widgets.php");
     }
 
-    public function currencyOptionsGroup( $input)
-    {
-        return $input;
-    }
+    // public function currencyOptionsGroup( $input)
+    // {
+    //     return $input;
+    // }
 
-    public function currencySection()
-    {
-        echo 'check me out!';//CHECK THE GITHUB PLACE FOR WHAT IS HERE!!!
-    }
+    // public function currencySection()
+    // {
+    //     echo '';
+    // }
 
     public function currencyFields()
     {
-        $value = esc_attr(get_option('text_example'));
-        echo '<input type = "text" class = "regular-text" name = "text_example" value = "'.$value.'" placeholder = "Write something here pls">';
+        //create an input field
+        $value = esc_attr(get_option('last_name'));
+        echo '<input type = "text" class = "regular-text" name = "text_example" value = "'.$value.'" placeholder = "Write Last name">';
     }
 
     public function currencyFirstname()
     {
+        //create an input field
         $value = esc_attr(get_option('first_name'));
         echo '<input type = "text" class = "regular-text" name = "first_name" value = "'.$value.'" placeholder = "Write First name">';
     }

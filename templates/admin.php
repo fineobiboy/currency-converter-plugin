@@ -1,8 +1,7 @@
 <div class="wrap">
-    <h1>Currency Conversion Plugin</h1>
+    <h1>Dashboard</h1>
     <?php
     settings_errors();
-    include "templates/function.php";
     ?>
 
     <ul class="nav nav-tabs">
@@ -13,11 +12,10 @@
 
     <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
-            <h3>Settings Tab</h3>
             <form method="POST" action="options.php">
                 <?php
-                //settings_fields('currency_option_group');
-                //do_settings_sections('currency_conversion');
+                settings_fields('currency_plugin_settings');
+                do_settings_sections('currency_conversion');
                 submit_button();
 
                 ?>
