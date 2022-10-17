@@ -10,7 +10,7 @@
         <h2>Currency Converter</h2>
         <form name="form1" action="" method="POST">
             <p>Please enter an amount to convert: </p>
-            <input type="text" name="figure01" size = "15" placeholder="Enter a number" required>
+            <input type="text" name="figure01" size="15" placeholder="Enter a number" required>
             <select name="convertfrom">
                 <option value="select" selected>Select</option>
                 <option value="USD">US Dollar</option>
@@ -30,7 +30,6 @@
             </p>
             <input name="submit" type="submit" value="Submit"></br>
         </form>
-
 </body>
 
 </html>
@@ -51,7 +50,6 @@ if (isset($_POST['submit'])) {
         $Converted_price = round(($base_price * $apiBody->conversion_rates->$convertinto), 2);
     }
     echo "<strong>$amount</strong>" . " $convertfrom" . ' is equal to ' . "<strong>$Converted_price</strong>" . " $convertinto";
-
 }
 
 ?>

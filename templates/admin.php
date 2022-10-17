@@ -2,7 +2,6 @@
     <h1>Dashboard</h1>
     <?php
     settings_errors();
-    include "templates/function.php";
     ?>
 
     <ul class="nav nav-tabs">
@@ -15,7 +14,7 @@
         <div id="tab-1" class="tab-pane active">
             <form method="POST" action="options.php">
                 <?php
-                settings_fields('currency_option_group');
+                settings_fields('currency_plugin_settings');
                 do_settings_sections('currency_conversion');
                 submit_button();
 
