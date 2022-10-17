@@ -44,7 +44,7 @@ class AdminCallback extends BaseController
 
     public function currencyFirstname()
     {
-        //create an input field
+        //creates a second input field
         $value = esc_attr(get_option('first_name'));
         echo '<input type = "text" class = "regular-text" name = "first_name" value = "'.$value.'" placeholder = "Write First name">';
     }
