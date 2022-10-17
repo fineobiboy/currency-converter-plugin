@@ -14,21 +14,14 @@ class SettingsMngrCallback extends BaseController
     public function sanitizeCheckbox( $input)
     {
         //return filter_var($input, FILTER_SANITIZE_NUMBER_INT);// filters for only numbers 0 or 1
-        return (isset($input) ? true : false);//checks if the checkbox was checked properly or not
+        return (isset($input) ? true : false);//checks if the checkbox was checked properly and returns true or false.
     }
 
-    //function to echo a message for the top of the section
     public function currencySectionMngr()
     {
         echo 'Choose what sections to activate';
     }
 
-    /**
-     * Makes a checkbox for the different settings fields
-     *
-     * @param array $args  gotten from the settings fields in Admin.php
-     * then echo the checkbox
-     */
     public function checkBoxField($args)
     {
         $name = $args['label_for'];
